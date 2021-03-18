@@ -1,6 +1,4 @@
-# hospitalization-prediction
-
-# Impepdom: Neural network builder for peptide ligand classification
+# A risk prediction model for 6-month hospitalization among patients with chronic kidney disease
 <hr />
 
 Description to be added...
