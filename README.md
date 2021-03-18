@@ -6,16 +6,10 @@ Hospitalization is responsible for considerable financial and disease burden in 
 
 ## Code Documentation
 #### Data Preparation
-If you're using macOS, install `pipenv` with Homebrew
-```
-$ brew install pipenv
-```
-More documentation: https://github.com/pypa/pipenv
+The data_viz folder contains python scripts for data cleaning, data consolidation, and data preprocessing.
 
 #### Modeling
-```
-$ git clone https://github.com/mikochen0107/mhc-1-immunopeptidome-characterization.git
-$ cd mhc-1-immunopeptidome-characterization
-$ pipenv install
-```
+The modeling folder contains python scripts for model specification for logistic regression, random forest classifier, and gradient boosting classifier, as well as  model metrics. 
+
 #### Data Visualization
+The data_viz folder contains python scripts for producing the tables and figures in the paper. 
