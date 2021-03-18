@@ -26,3 +26,17 @@ rf_disp = plot_roc_curve(rf, X_test, y_test, ax=lr_disp.ax_, name='Random Forest
 gb_disp = plot_roc_curve(gb, X_test, y_test, ax=rf_disp.ax_, name='Gradient Boosting')
 plt.plot([0, 1], [0, 1], color='grey', lw=1, linestyle='--')
 plt.show()
+
+#### precision-recall curves
+
+from sklearn.metrics import plot_precision_recall_curve
+
+lr_disp = plot_precision_recall_curve(lr, X_train, y_train, name='Logistic Regression')
+rf_disp = plot_precision_recall_curve(rf, X_train, y_train, ax=lr_disp.ax_, name='Random Forest')
+gb_disp = plot_precision_recall_curve(gb, X_train, y_train, ax=rf_disp.ax_, name='Gradient Boosting')
+plt.show()
+
+lr_disp = plot_precision_recall_curve(lr, X_test, y_test, name='Logistic Regression')
+rf_disp = plot_precision_recall_curve(rf, X_test, y_test, ax=lr_disp.ax_, name='Random Forest')
+gb_disp = plot_precision_recall_curve(gb, X_test, y_test, ax=rf_disp.ax_, name='Gradient Boosting')
+plt.show()
