@@ -57,8 +57,13 @@ rf = RandomForestClassifier(n_estimators=1400, min_samples_split=5, min_samples_
                             max_depth=None, bootstrap=True, random_state=7, n_jobs=-1) 
 rf.fit(X_train, y_train)
 
+# model calibration
+from sklearn.calibration import CalibratedClassifierCV
+calibrated_clf = CalibratedClassifierCV(base_estimator=rf, cv=5)
+calibrated_clf.fit(X_train, y_train)
+
 y_pred_rf = rf.predict(X_train) # get the predictions (0/1)
-y_prob_rf = rf.predict_proba(X_train)[:, 1] # get the prob for predicting 1s
+y_prob_rf = calibrated_clf.predict_proba(X_train)[:, 1] # get the prob for predicting 1s
 
 # metrics for training set
 model_metrics(y_train, y_pred_rf, y_prob_rf)
@@ -68,7 +73,7 @@ X_test = np.genfromtxt(r"M:\UCSF_ARS\michael_thesis\processed_data\X_test_knn.cs
 y_test = np.genfromtxt(r"M:\UCSF_ARS\michael_thesis\processed_data\y_test.csv", delimiter=',')
 y_test = y_test[1:,1]
 
-y_pred_rf_test = rf1.predict(X_test) # get the predictions (0/1)
-y_prob_rf_test = rf1.predict_proba(X_test)[:, 1] # get the prob for predicting 1s
+y_pred_rf_test = rf.predict(X_test) # get the predictions (0/1)
+y_prob_rf_test = calibrated_clf.predict_proba(X_test)[:, 1] # get the prob for predicting 1s
 
 model_metrics(y_test, y_pred_rf_test, y_prob_rf_test)
